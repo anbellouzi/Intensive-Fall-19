@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div id="booking" class="section">
+  <div class="section-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-7 col-md-push-5">
+          <div class="booking-cta">
+            <h1>{{book_parking.address}}</h1>
+            <p>{{book_parking.description}}</p>
+            <h1>${{book_parking.price}}</h1>
+          </div>
+        </div>
+        <div class="col-md-4 col-md-pull-7">
+          <div class="booking-form">
+            <form>
+              <div class="form-group">
+                <span class="form-label">Your Car Details</span>
+                <input class="form-control" type="text" placeholder="Year / Make / Model">
+              </div>
+              <div class="form-group">
+                <span class="form-label">Liscence plate</span>
+                <input class="form-control" type="text" placeholder="Liscence plate">
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <span class="form-label">Check In</span>
+                    <input class="form-control" type="date" required>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <span class="form-label">Check out</span>
+                    <input class="form-control" type="date" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <span class="form-label">Type</span>
+                    <select class="form-control">
+                      <option>Sedan</option>
+                      <option>Coupe</option>
+                      <option>SUV</option>
+                      <option>Truck</option>
+                      <option>Bus</option>
+                    </select>
+                    <span class="select-arrow"></span>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <span class="form-label">Color</span>
+                    <select class="form-control">
+                      <option>Black</option>
+                      <option>White</option>
+                      <option>Red</option>
+                      <option>Green</option>
+                      <option>Grey</option>
+                      <option>Silver</option>
+                    </select>
+                    <span class="select-arrow"></span>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-group">
+                    <span class="form-label">Referral</span>
+                    <select class="form-control">
+                      <option>Online</option>
+                      <option>Friend</option>
+                      <option>School</option>
+                      <option>Business</option>
+                    </select>
+                    <span class="select-arrow"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-btn">
+                <button class="submit-btn">Check availability</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

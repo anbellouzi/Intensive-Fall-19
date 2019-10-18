@@ -1,0 +1,22 @@
+<!-- templates/edit_item.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul class="home_list">
+  {% for parking in parkings %}
+    <li>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src='{{ parking.img }}' alt="Parking image">
+        <div class="card-body">
+          <h5 class="card-title">{{ parking.title }}</h5>
+          <p class="card-text">{{ parking.description }}</p>
+          <p class="card-text">${{parking.price }}</p>
+          <a href="/parking/{{ parking._id }}" class="btn btn-primary">Book Now</a>
+        </div>
+      </div>
+    </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

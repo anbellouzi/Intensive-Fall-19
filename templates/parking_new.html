@@ -1,0 +1,16 @@
+<!-- templates/playlists_new.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <form method='POST' action='/parkings'>
+            {% include 'partials/parking_form.html' %}
+            <!-- BUTTON -->
+            <div class='form-group'>
+                <button class='btn btn-primary' type='submit'>Save Parking</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+<!-- templates/playlists_show.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<a href='/'>Back to Home</a>
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+      <h1>{{parking.address}}</h1>
+      <h2 style="color:red">${{ parking.price }}</h2>
+      <div class="card"><div class="card-body">
+          <img class="show_image" src="{{ parking.img }}" alt="">
+      </div></div>
+
+        <h2>{{ parking.description }}</h2>
+
+
+        <ul class="action_buttons">
+          <li>
+            <p><form method='POST' action='/book/parking/{{parking._id}}'>
+                <input type='hidden' name='_method' value='CART'>
+                <button class='btn btn-primary' type='submit'>Book Now</button>
+            </form></p>
+          </li>
+          <li>
+            <p><form method='POST' action='/parking/{{parking._id}}/edit'>
+                <input type='hidden' name='_method' value='EDIT'>
+                <button class='btn btn-primary' type='submit'>Edit</button>
+            </form></p>
+          </li>
+          <li>
+            <p><form method='POST' action='/parking/{{parking._id}}/delete'>
+                <input type='hidden' name='_method' value='DELETE'>
+                <button class='btn btn-primary' type='submit'>Delete</button>
+            </form></p>
+          </li>
+        </ul>
+
+        {% include 'partials/comment_form.html' %}
+
+        {% for comment in comments %}
+            {% include 'partials/comment.html' %}
+        {% endfor %}
+    </div>
+
+
+
+</div>
+{% endblock %}

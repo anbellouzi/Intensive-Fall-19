@@ -17,7 +17,7 @@
          <div class="col-xs-12">
             <a class="navbar-brand logo" href="/">
         <!-- place your image here -->
-               <img src="static/img/hot_sauce_banner.png" alt="company logo" style="width: 100%;">
+               <img src="static/img/parking.png" alt="company logo">
             </a>
          </div>
       </div>
@@ -30,14 +30,15 @@
 <!-- source code: https://bootstrapious.com/p/bootstrap-quote -->
 <!-- source content: https://www.bunstersworldwide.com/pages/home -->
 <div class="container">
-  <div class="row">
+  <!-- <div class="row">
       <div class="col-lg-6 mx-auto">
           <header class="text-center pb-5">
-              <h1 class="h2">ARE YOU TIRED OF PAYING PARKING CITATIONS</h1>
+              <h1 class="h2">ARE YOU TIRED OF DRIVING IN CIRCLES LOOKING FOR PARKING?</h1>
               <p>Bootstrap snippet by <a href="https://bootstrapious.com/snippets" class="font-italic text-info">Bootstrapious</a></p>
           </header>
       </div>
-  </div><!-- END -->
+  </div> -->
+  <!-- END -->
   <!-- <div class="row">
       <div class="col-lg-6 mx-auto" style="text-align:center">
 
@@ -68,7 +69,7 @@
           <h5 class="card-title">{{ parking.title }}</h5>
           <p class="card-text">{{ parking.description }}</p>
           <p class="card-text">${{parking.price }}</p>
-          <a href="shop/item/{{ item._id }}" class="btn btn-primary">Buy Now</a>
+          <a href="/parking/{{ parking._id }}" class="btn btn-primary">Book Now</a>
         </div>
       </div>
     </li>

@@ -1,0 +1,33 @@
+<!-- templates/partials/playlists_form.html -->
+<fieldset>
+    <legend>Edit Item</legend>
+    <!-- TITLE -->
+    <div class='form-group'>
+        <label for='playlist-title'>Address</label><br>
+        <input class='form-control' id='item-title' type='text' name='address' value='{{ parking.address }}'/>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class='form-group'>
+        <label for='description'>Description</label><br>
+        <textarea class='form-control' id='description' name='description' rows='10' />{{ parking.description }}</textarea>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class='form-group'>
+        <label for='playlist-videos'>Images</label><br/>
+        <p class='text-muted'>Add image source: format https://www.website.com/image.jpg</p>
+        <textarea class='form-control' id='item-img' name='images' rows='3' />{{ parking.img }}</textarea>
+    </div>
+
+    <!-- Price -->
+    <div class='form-group'>
+        <label for='description'>Price</label><br>
+        <input class='form-control' id='price' type='number' name='price' value='{{ parking.price }}' />
+    </div>
+</fieldset>
+
+<!-- BUTTON -->
+<!-- <p>
+    <button type='submit'>Save Playlist</button>
+</p> -->
