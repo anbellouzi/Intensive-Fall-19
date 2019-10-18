@@ -11,8 +11,17 @@
           <img class="show_image" src="{{ parking.img }}" alt="">
       </div></div>
 
+        <h2><strong>Availability</strong></h2>
+        <p>Start Date: {{ parking.start_date}} @ {{ parking.start_hour}}:{{ parking.start_min}} {{ parking.start_ampm}}</p>
+        <p>End Date: {{ parking.end_date}} @ {{ parking.end_hour}}:{{ parking.end_min}} {{ parking.end_ampm}}</p>
+
+        <h2><strong>Description</strong></h2>
         <h2>{{ parking.description }}</h2>
 
+        <h2><strong>Contact</strong></h2>
+        <h2>Name: {{ parking.name }}</h2>
+        <h2>Email: {{ parking.email }}</h2>
+        <h2>Phone: {{ parking.phone }}</h2>
 
         <ul class="action_buttons">
           <li>

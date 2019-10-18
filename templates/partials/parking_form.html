@@ -1,33 +1,176 @@
-<!-- templates/partials/playlists_form.html -->
-<fieldset>
-    <legend>Edit Item</legend>
-    <!-- TITLE -->
-    <div class='form-group'>
-        <label for='playlist-title'>Address</label><br>
-        <input class='form-control' id='item-title' type='text' name='address' value='{{ parking.address }}'/>
+<!-- <div id="booking" class="section"> -->
+  <div class="section-center">
+    <div class="container">
+      <div class="row">
+        <div class="booking-form">
+          <div class="form-header">
+            <h1>Sell Parking</h1>
+          </div>
+          <form>
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <span class="form-label">Name</span>
+                  <input class="form-control" name="name" type="text" placeholder="Enter your name" value='{{parking.name}}'>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <span class="form-label">Email</span>
+                  <input class="form-control" name="email" type="email" placeholder="Enter your email"  value='{{parking.email}}'>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <span class="form-label">Phone</span>
+              <input class="form-control" name="phone" type="tel" placeholder="Enter your phone number"  value='{{parking.phone}}'>
+            </div>
+            <div class="form-group">
+              <span class="form-label">Address</span>
+              <input class="form-control" name="address" type="text" placeholder="Enter Location"  value='{{parking.address}}'>
+            </div>
+            <div class="form-group">
+              <span class="form-label">Price</span>
+              <input class="form-control" name="price" type="text" placeholder="Enter Price"  value='{{parking.price}}'>
+            </div>
+            <div class="form-group">
+              <span class="form-label">Description</span>
+              <input class="form-control" name="description" type="text" placeholder="Enter Description"  value='{{parking.description}}'>
+            </div>
+            <div class="form-group">
+              <span class="form-label">Image</span>
+              <input class="form-control" name="images" type="text" placeholder="image.png"  value='{{parking.img}}'>
+            </div>
+            <span class="form-label">Start Parking</span>
+            <div class="row">
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <span class="form-label">Date</span>
+                  <input class="form-control" name="start_date" type="date"  value='{{parking.start_date}}' required>
+                </div>
+              </div>
+              <div class="col-sm-7">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <span class="form-label">Hour</span>
+                      <select class="form-control" name="start_hour"  value='{{parking.start_hour}}'>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                      </select>
+                      <span class="select-arrow"></span>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <span class="form-label">Min</span>
+                      <select class="form-control" name="start_min"  value='{{parking.start_min}}'>
+                        <option>05</option>
+                        <option>10</option>
+                        <option>15</option>
+                        <option>20</option>
+                        <option>25</option>
+                        <option>30</option>
+                        <option>35</option>
+                        <option>40</option>
+                        <option>45</option>
+                        <option>50</option>
+                        <option>55</option>
+                      </select>
+                      <span class="select-arrow"></span>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <span class="form-label">AM/PM</span>
+                      <select class="form-control" name="start_ampm"  value='{{parking.start_ampm}}'>
+                        <option>AM</option>
+                        <option>PM</option>
+                      </select>
+                      <span class="select-arrow"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span class="form-label">End Parking</span>
+            <div class="row">
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <span class="form-label">Date</span>
+                  <input class="form-control" name="end_date" type="date"  value='{{parking.end_date}}' required>
+                </div>
+              </div>
+              <div class="col-sm-7">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <span class="form-label">Hour</span>
+                      <select class="form-control" name="end_hour"  text='2'>
+                        <option value="1" >1</option>
+                        <option value="2" >2</option>
+                        <option value="3" >3</option>
+                        <option value="4" >4</option>
+                        <option value="5" >5</option>
+                        <option value="6" >6</option>
+                        <option value="7" >7</option>
+                        <option value="8" >8</option>
+                        <option value="9" >9</option>
+                        <option value="10" >10</option>
+                        <option value="11" >11</option>
+                        <option value="12" >12</option>
+                      </select>
+                      <span class="select-arrow"></span>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <span class="form-label">Min</span>
+                      <select class="form-control" name="end_min"  value='{{parking.end_min}}'>
+                        <option>05</option>
+                        <option>10</option>
+                        <option>15</option>
+                        <option>20</option>
+                        <option>25</option>
+                        <option>30</option>
+                        <option>35</option>
+                        <option>40</option>
+                        <option>45</option>
+                        <option>50</option>
+                        <option>55</option>
+                      </select>
+                      <span class="select-arrow"></span>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <span class="form-label">AM/PM</span>
+                      <select class="form-control" name="end_ampm"  value='{{parking.end_ampm}}'>
+                        <option>AM</option>
+                        <option>PM</option>
+                      </select>
+                      <span class="select-arrow"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-btn">
+              <button class="submit-btn">Sell Parking</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-
-    <!-- DESCRIPTION -->
-    <div class='form-group'>
-        <label for='description'>Description</label><br>
-        <textarea class='form-control' id='description' name='description' rows='10' />{{ parking.description }}</textarea>
-    </div>
-
-    <!-- DESCRIPTION -->
-    <div class='form-group'>
-        <label for='playlist-videos'>Images</label><br/>
-        <p class='text-muted'>Add image source: format https://www.website.com/image.jpg</p>
-        <textarea class='form-control' id='item-img' name='images' rows='3' />{{ parking.img }}</textarea>
-    </div>
-
-    <!-- Price -->
-    <div class='form-group'>
-        <label for='description'>Price</label><br>
-        <input class='form-control' id='price' type='number' name='price' value='{{ parking.price }}' />
-    </div>
-</fieldset>
-
-<!-- BUTTON -->
-<!-- <p>
-    <button type='submit'>Save Playlist</button>
-</p> -->
+  </div>
+<!-- </div> -->

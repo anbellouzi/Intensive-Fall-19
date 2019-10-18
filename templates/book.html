@@ -9,8 +9,16 @@
         <div class="col-md-7 col-md-push-5">
           <div class="booking-cta">
             <h1>{{book_parking.address}}</h1>
-            <p>{{book_parking.description}}</p>
             <h1>${{book_parking.price}}</h1>
+            <h2><strong>Availability</strong></h2>
+            <p>Start Date: {{ book_parking.start_date}} @ {{ book_parking.start_hour}}:{{ book_parking.start_min}} {{ book_parking.start_ampm}}</p>
+            <p>End Date: {{ book_parking.end_date}} @ {{ book_parking.end_hour}}:{{ book_parking.end_min}} {{ book_parking.end_ampm}}</p>
+            <p>{{book_parking.description}}</p>
+            <h2><strong>Contact</strong></h2>
+            <p>Name: {{book_parking.name}}</p>
+            <p>Email: {{book_parking.email}}</p>
+            <p>Phone: {{book_parking.phone}}</p>
+
           </div>
         </div>
         <div class="col-md-4 col-md-pull-7">

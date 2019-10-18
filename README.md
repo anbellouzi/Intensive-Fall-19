@@ -29,3 +29,4 @@ Resources:
 Credit:
   - Contractor Project
   - Playlist project
+  - Colorlib.com

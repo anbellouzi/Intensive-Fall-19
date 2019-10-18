@@ -18,6 +18,7 @@ app = Flask(__name__)
 def parking_index():
     """Show all parking."""
     all_parkings = parkings.find()
+    print(all_parkings)
     return render_template('index.html', parkings=all_parkings)
 
 @app.route('/parkings/')
@@ -35,12 +36,21 @@ def parking_new():
 def parking_submit():
     """Submit a new parking."""
     parking = {
+        'name': request.form.get('name'),
+        'email': request.form.get('email'),
+        'phone': request.form.get('phone'),
         'address': request.form.get('address'),
         'description': request.form.get('description'),
         'price': request.form.get('price'),
         'img': request.form.get('images'),
-        # 'date': datetime.now().strftime('%A, %d %B, %Y'),
-        # 'time': datetime.now().strftime('%I:%M %p')
+        'start_date': request.form.get('start_date'),
+        'start_time': request.form.get('start_time'),
+        'start_min': request.form.get('start_min'),
+        'start_ampm': request.form.get('start_ampm'),
+        'end_date': request.form.get('end_date'),
+        'end_time': request.form.get('end_time'),
+        'end_min': request.form.get('end_min'),
+        'end_ampm': request.form.get('end_ampm'),
     }
     parking_id = parkings.insert_one(parking).inserted_id
     return redirect(url_for('show_parking', parking_id=parking_id))
@@ -62,10 +72,21 @@ def items_edit(parking_id):
 def items_update(parking_id):
     """Submit an edited item."""
     updated_parking = {
+        'name': request.form.get('name'),
+        'email': request.form.get('email'),
+        'phone': request.form.get('phone'),
         'address': request.form.get('address'),
         'description': request.form.get('description'),
         'price': request.form.get('price'),
         'img': request.form.get('images'),
+        'start_date': request.form.get('start_date'),
+        'start_hour': request.form.get('start_hour'),
+        'start_min': request.form.get('start_min'),
+        'start_ampm': request.form.get('start_ampm'),
+        'end_date': request.form.get('end_date'),
+        'end_hour': request.form.get('end_hour'),
+        'end_min': request.form.get('end_min'),
+        'end_ampm': request.form.get('end_ampm'),
     }
     parkings.update_one(
         {'_id': ObjectId(parking_id)},
@@ -73,20 +94,20 @@ def items_update(parking_id):
     return redirect(url_for('show_parking', parking_id=parking_id))
 
 
-# @app.route('/parking/<parking_id>/delete', methods=['POST'])
-# def item_delete(parking_id):
-#     """Delete one parking."""
-#     parkings.delete_one({'_id': ObjectId(parking_id)})
-#     return redirect(url_for('parking_index'))
-#
-# @app.route('/book/parking/<parking_id>', methods=['POST'])
-# def add_shopping_cart(parking_id):
-#     """Show a single playlist."""
-#     parking = parkings.find_one({'_id': ObjectId(parking_id)})
-#     book.parking = parking
-#     book.save(parking)
-#     book_parking = book.find()
-#     return render_template('book.html', book_parking=parking)
+@app.route('/parking/<parking_id>/delete', methods=['POST'])
+def item_delete(parking_id):
+    """Delete one parking."""
+    parkings.delete_one({'_id': ObjectId(parking_id)})
+    return redirect(url_for('parking_index'))
+
+@app.route('/book/parking/<parking_id>', methods=['POST'])
+def add_shopping_cart(parking_id):
+    """Show a single playlist."""
+    parking = parkings.find_one({'_id': ObjectId(parking_id)})
+    book.parking = parking
+    book.save(parking)
+    book_parking = book.find()
+    return render_template('book.html', book_parking=parking)
 
 #
 # @app.route('/shopping_cart/<item_id>')
@@ -100,35 +121,35 @@ def items_update(parking_id):
 #     cart_items = cart.find()
 #     return render_template('shopping_cart.html', cart_items=cart_items, total=total)
 #
-
+#
 # @app.route('/cart/<cart_id>/delete', methods=['POST'])
 # def cart_delete(cart_id):
 #     """Delete one item."""
 #     cart.delete_one({'_id': ObjectId(cart_id)})
 #
 #     return redirect(url_for('show_shopping_cart', item_id=cart_id))
-#
-#
-# @app.route('/item/comments', methods=['POST'])
-# def comments_new():
-#     """Submit a new comment."""
-#     comment = {
-#         'title': request.form.get('title'),
-#         'content': request.form.get('content'),
-#         'created_at': datetime.now(),
-#         'item_id': ObjectId(request.form.get('item_id'))
-#     }
-#     comment_id = comments.insert_one(comment).inserted_id
-#
-#     return redirect(url_for('show_parking', item_id=request.form.get('item_id')))
-#
-# @app.route('/item/comments/<comment_id>', methods=['POST'])
-# def comments_delete(comment_id):
-#     """Action to delete a comment."""
-#     comment = comments.find_one({'_id': ObjectId(comment_id)})
-#     comments.delete_one({'_id': ObjectId(comment_id)})
-#     return redirect(url_for('show_parking', item_id=comment.get('item_id')))
-#
+
+
+@app.route('/parking/comments', methods=['POST'])
+def comments_new():
+    """Submit a new comment."""
+    comment = {
+        'title': request.form.get('title'),
+        'content': request.form.get('content'),
+        'created_at': datetime.now(),
+        'parking_id': ObjectId(request.form.get('parking_id'))
+    }
+    comment_id = comments.insert_one(comment).inserted_id
+
+    return redirect(url_for('show_parking', parking_id=request.form.get('parking_id')))
+
+@app.route('/parking/comments/<comment_id>', methods=['POST'])
+def comments_delete(comment_id):
+    """Action to delete a comment."""
+    comment = comments.find_one({'_id': ObjectId(comment_id)})
+    comments.delete_one({'_id': ObjectId(comment_id)})
+    return redirect(url_for('show_parking', parking_id=comment.get('parking_id')))
+
 
 
 
