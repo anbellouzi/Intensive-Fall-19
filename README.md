@@ -5,7 +5,11 @@ Project: Intensive
 
 Description: Parking software that allows users to buy and sell private and public parking areas.
 
-Instruction: live version @ https://intensive-parking-ab.herokuapp.com/
+Instruction:- live version @ https://intensive-parking-ab.herokuapp.com/
+        - Local version Step 1. git clone https://github.com/anbellouzi/Intensive-Fall-19.git
+                        Step 2. $ export FLASK_ENV=development
+                        step 3. $ flask run
+                        Step 4. visit www.localhost:5000/
 
 Sellers:
   - Sell parking -> /parking/new
