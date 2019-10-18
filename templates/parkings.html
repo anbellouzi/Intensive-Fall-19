@@ -10,12 +10,14 @@
   {% for parking in parkings %}
     <li>
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src='{{ parking.img }}' alt="Parking image">
+        <img class="card-img-top" id="card_image" src='{{ parking.img }}' alt="Parking image">
         <div class="card-body">
           <h5 class="card-title">{{ parking.address }}</h5>
           <p class="card-text">{{ parking.description }}</p>
+          <p class="card-text">{{ parking.start_date }} - {{ parking.end_date}}</p>
+          <p class="card-text">{{ parking.start_hour }}:{{ parking.start_min }} {{ parking.start_ampm }} to {{ parking.end_hour }}:{{ parking.end_min }} {{ parking.end_ampm }}</p>
           <p class="card-text">${{parking.price }}</p>
-          <a href="/parking/{{ parking._id }}" class="btn btn-primary">Book Now</a>
+          <a href="/parking/{{ parking._id }}" class="btn btn-primary">Check Availability</a>
         </div>
       </div>
     </li>

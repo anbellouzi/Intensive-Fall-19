@@ -8,18 +8,16 @@ Description: Parking software that allows users to buy and sell private and publ
 Instruction: visit live version @ www.park-ab.herokuapp.com
 
 Sellers:
-  - Add new parking -> /parking/new
+  - Sell parking -> /parking/new
   - Update Parking
   - Delete Parking
   - Read/Reply to comments
 
 Buyers:
-  - Add new car -> /car/new
-  - View all parking -> parking/all
-  - View single parking -> parking/<item_id>
+  - View all parking -> /parkings/
+  - View single parking -> /parking/<item_id>
   - Comment on specific parking
-  - Add parking to cart
-  - Delete parking from cart
+  - Book parking
 
 Resources:
   - Flask
@@ -30,3 +28,4 @@ Credit:
   - Contractor Project
   - Playlist project
   - Colorlib.com
+  - Stackoverflow.com
