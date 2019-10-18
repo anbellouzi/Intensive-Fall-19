@@ -19,13 +19,13 @@ def parking_index():
     """Show all parking."""
     all_parkings = parkings.find()
     return render_template('index.html', parkings=all_parkings)
-# 
-# @app.route('/parkings/')
-# def parkings_show_all():
-#     """Show all parkings."""
-#     all_parkings = parkings.find()
-#     return render_template('parkings.html', parkings=all_parkings)
-# #
+
+@app.route('/parkings/')
+def parkings_show_all():
+    """Show all parkings."""
+    all_parkings = parkings.find()
+    return render_template('parkings.html', parkings=all_parkings)
+#
 # @app.route('/parking/new')
 # def parking_new():
 #     """Create a new parking."""
