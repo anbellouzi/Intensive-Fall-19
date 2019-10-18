@@ -44,35 +44,35 @@ def parking_submit():
     }
     parking_id = parkings.insert_one(parking).inserted_id
     return redirect(url_for('show_parking', parking_id=parking_id))
-#
-# @app.route('/parking/<parking_id>')
-# def show_parking(parking_id):
-#     """Show a single parking."""
-#     parking = parkings.find_one({'_id': ObjectId(parking_id)})
-#     parking_comments = comments.find({'parking_id': ObjectId(parking_id)})
-#     return render_template('parking_show.html', parking=parking, comments=parking_comments)
-#
-# @app.route('/parking/<parking_id>/edit', methods=['POST', 'GET'])
-# def items_edit(parking_id):
-#     """Show the edit form for a item."""
-#     parking = parkings.find_one({'_id': ObjectId(parking_id)})
-#     return render_template('parking_edit.html', parking=parking, title='Edit Parking')
-#
-# @app.route('/parking/<parking_id>', methods=['POST'])
-# def items_update(parking_id):
-#     """Submit an edited item."""
-#     updated_parking = {
-#         'address': request.form.get('address'),
-#         'description': request.form.get('description'),
-#         'price': request.form.get('price'),
-#         'img': request.form.get('images'),
-#     }
-#     parkings.update_one(
-#         {'_id': ObjectId(parking_id)},
-#         {'$set': updated_parking})
-#     return redirect(url_for('show_parking', parking_id=parking_id))
-#
-#
+
+@app.route('/parking/<parking_id>')
+def show_parking(parking_id):
+    """Show a single parking."""
+    parking = parkings.find_one({'_id': ObjectId(parking_id)})
+    parking_comments = comments.find({'parking_id': ObjectId(parking_id)})
+    return render_template('parking_show.html', parking=parking, comments=parking_comments)
+
+@app.route('/parking/<parking_id>/edit', methods=['POST', 'GET'])
+def items_edit(parking_id):
+    """Show the edit form for a item."""
+    parking = parkings.find_one({'_id': ObjectId(parking_id)})
+    return render_template('parking_edit.html', parking=parking, title='Edit Parking')
+
+@app.route('/parking/<parking_id>', methods=['POST'])
+def items_update(parking_id):
+    """Submit an edited item."""
+    updated_parking = {
+        'address': request.form.get('address'),
+        'description': request.form.get('description'),
+        'price': request.form.get('price'),
+        'img': request.form.get('images'),
+    }
+    parkings.update_one(
+        {'_id': ObjectId(parking_id)},
+        {'$set': updated_parking})
+    return redirect(url_for('show_parking', parking_id=parking_id))
+
+
 # @app.route('/parking/<parking_id>/delete', methods=['POST'])
 # def item_delete(parking_id):
 #     """Delete one parking."""
