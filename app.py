@@ -10,6 +10,7 @@ db = client.get_default_database()
 parkings = db.parkings
 cars = db.cars
 book = db.book
+reservation = db.reservation
 comments = db.comments
 
 app = Flask(__name__)
@@ -109,25 +110,57 @@ def add_shopping_cart(parking_id):
     book_parking = book.find()
     return render_template('book.html', book_parking=parking)
 
-#
-# @app.route('/shopping_cart/<item_id>')
-# def show_shopping_cart(item_id):
-#     """Show a single playlist."""
-#     cart_items = cart.find()
-#     total = 0
-#     for item in cart_items:
-#         total += int(float(item['price']))
-#
-#     cart_items = cart.find()
-#     return render_template('shopping_cart.html', cart_items=cart_items, total=total)
-#
-#
-# @app.route('/cart/<cart_id>/delete', methods=['POST'])
-# def cart_delete(cart_id):
-#     """Delete one item."""
-#     cart.delete_one({'_id': ObjectId(cart_id)})
-#
-#     return redirect(url_for('show_shopping_cart', item_id=cart_id))
+
+@app.route('/confirmation', methods=['POST'])
+def reservation_submit():
+    """Submit a new parking."""
+    start_date = request.form.get('start_date')
+    start_hour = request.form.get('start_hour')
+    start_min = request.form.get('start_min')
+    start_ampm = request.form.get('start_ampm')
+    start_time = str(start_hour)+':'+str(start_min)+' '+str(start_ampm)+' '+str(start_date)
+
+    end_date = request.form.get('end_date')
+    end_hour = request.form.get('end_hour')
+    end_min = request.form.get('end_min')
+    end_ampm = request.form.get('end_ampm')
+    end_time = str(end_hour)+':'+str(end_min)+' '+str(end_ampm)+' '+str(end_date)
+
+    reserve = {
+        'name': request.form.get('name'),
+        'car': request.form.get('car'),
+        'car_plates': request.form.get('car_plates'),
+        'car_color': request.form.get('car_color'),
+        'car_type': request.form.get('car_type'),
+        'referral': request.form.get('referral'),
+        'address': request.form.get('address'),
+        'start_time': start_time,
+        'end_time': end_time,
+        'parking_id': ObjectId(request.form.get('parking_id'))
+
+    }
+    reservation_id = reservation.insert_one(reserve).inserted_id
+    return redirect(url_for('show_confirmation', reservation_id=reservation_id))
+
+
+@app.route('/confirmation/<reservation_id>')
+def show_confirmation(reservation_id):
+    """Submit a new parking."""
+    reserve = reservation.find_one({'_id': ObjectId(reservation_id)})
+    return render_template('confirmation.html', reservation=reserve)
+
+@app.route('/search', methods=['GET', 'POST'])
+def search_parking():
+    """Submit a new parking."""
+
+    phrase = request.args.get('search_term')
+
+    query_term = { "address": { "$regex": phrase.title() } }
+
+    results = parkings.find(query_term)
+
+    return render_template('parkings.html', parkings=results, title=phrase)
+
 
 
 @app.route('/parking/comments', methods=['POST'])

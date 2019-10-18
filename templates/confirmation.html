@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="jumbotron text-center">
+  <h1 class="display-3">Thank You {{reservation.name}}!</h1>
+  <p>Confirmation: {{reservation._id}}</p>
+  <br>
+  <p>Parking spot reserved for: {{reservation.car_color}} {{reservation.car}} {{reservation.car_type}} from {{reservation.start_time}} to {{reservation.end_time}}</p>
+  <p class="lead"><strong>Please check your email</strong> for further instructions on how to complete your account setup.</p>
+  <hr>
+  <p class="lead">
+    <a class="btn btn-primary btn-sm" href="/" role="button">Continue to homepage</a>
+  </p>
+</div>
+
+{% endblock %}

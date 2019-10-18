@@ -22,35 +22,148 @@
           </div>
         </div>
         <div class="col-md-4 col-md-pull-7">
-          <div class="booking-form">
-            <form>
+          <div class="booking-form" style="width:420px">
+            <form method='POST' action='/confirmation'>
+              <div class="form-group">
+                <span class="form-label">Your Name</span>
+                <input class="form-control" name="name" type="text" placeholder="John Doe">
+              </div>
               <div class="form-group">
                 <span class="form-label">Your Car Details</span>
-                <input class="form-control" type="text" placeholder="Year / Make / Model">
+                <input class="form-control" name="car" type="text" placeholder="Year / Make / Model">
               </div>
               <div class="form-group">
                 <span class="form-label">Liscence plate</span>
-                <input class="form-control" type="text" placeholder="Liscence plate">
+                <input class="form-control" name="car_plates" type="text" placeholder="Liscence plate">
               </div>
+              <span class="form-label">Start Parking</span>
               <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-5">
                   <div class="form-group">
-                    <span class="form-label">Check In</span>
-                    <input class="form-control" type="date" required>
+                    <span class="form-label">Date</span>
+                    <input class="form-control" name="start_date" type="date"   required>
                   </div>
                 </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <span class="form-label">Check out</span>
-                    <input class="form-control" type="date" required>
+                <div class="col-sm-7">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <span class="form-label">Hour</span>
+                        <select class="form-control" name="start_hour" >
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                          <option>8</option>
+                          <option>9</option>
+                          <option>10</option>
+                          <option>11</option>
+                          <option>12</option>
+                        </select>
+                        <span class="select-arrow"></span>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <span class="form-label">Min</span>
+                        <select class="form-control" name="start_min" >
+                          <option>05</option>
+                          <option>10</option>
+                          <option>15</option>
+                          <option>20</option>
+                          <option>25</option>
+                          <option>30</option>
+                          <option>35</option>
+                          <option>40</option>
+                          <option>45</option>
+                          <option>50</option>
+                          <option>55</option>
+                        </select>
+                        <span class="select-arrow"></span>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <span class="form-label">AM/PM</span>
+                        <select class="form-control" name="start_ampm" >
+                          <option>AM</option>
+                          <option>PM</option>
+                        </select>
+                        <span class="select-arrow"></span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+              <span class="form-label">End Parking</span>
+              <div class="row">
+                <div class="col-sm-5">
+                  <div class="form-group">
+                    <span class="form-label">Date</span>
+                    <input class="form-control" name="end_date" type="date"  required>
+                  </div>
+                </div>
+                <div class="col-sm-7">
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <span class="form-label">Hour</span>
+                        <select class="form-control" name="end_hour"  text='2'>
+                          <option value="1" >1</option>
+                          <option value="2" >2</option>
+                          <option value="3" >3</option>
+                          <option value="4" >4</option>
+                          <option value="5" >5</option>
+                          <option value="6" >6</option>
+                          <option value="7" >7</option>
+                          <option value="8" >8</option>
+                          <option value="9" >9</option>
+                          <option value="10" >10</option>
+                          <option value="11" >11</option>
+                          <option value="12" >12</option>
+                        </select>
+                        <span class="select-arrow"></span>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <span class="form-label">Min</span>
+                        <select class="form-control" name="end_min" >
+                          <option>05</option>
+                          <option>10</option>
+                          <option>15</option>
+                          <option>20</option>
+                          <option>25</option>
+                          <option>30</option>
+                          <option>35</option>
+                          <option>40</option>
+                          <option>45</option>
+                          <option>50</option>
+                          <option>55</option>
+                        </select>
+                        <span class="select-arrow"></span>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <span class="form-label">AM/PM</span>
+                        <select class="form-control" name="end_ampm" >
+                          <option>AM</option>
+                          <option>PM</option>
+                        </select>
+                        <span class="select-arrow"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               <div class="row">
                 <div class="col-sm-4">
                   <div class="form-group">
                     <span class="form-label">Type</span>
-                    <select class="form-control">
+                    <select class="form-control" name="car_type">
                       <option>Sedan</option>
                       <option>Coupe</option>
                       <option>SUV</option>
@@ -63,7 +176,7 @@
                 <div class="col-sm-4">
                   <div class="form-group">
                     <span class="form-label">Color</span>
-                    <select class="form-control">
+                    <select class="form-control" name="car_color">
                       <option>Black</option>
                       <option>White</option>
                       <option>Red</option>
@@ -77,7 +190,7 @@
                 <div class="col-sm-4">
                   <div class="form-group">
                     <span class="form-label">Referral</span>
-                    <select class="form-control">
+                    <select class="form-control" name="referral">
                       <option>Online</option>
                       <option>Friend</option>
                       <option>School</option>
