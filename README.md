@@ -5,7 +5,7 @@ Project: Intensive
 
 Description: Parking software that allows users to buy and sell private and public parking areas.
 
-Instruction: visit live version @ www.park-ab.herokuapp.com
+Instruction: live version @ https://intensive-parking-ab.herokuapp.com/
 
 Sellers:
   - Sell parking -> /parking/new
