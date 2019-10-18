@@ -25,25 +25,25 @@ def parkings_show_all():
     """Show all parkings."""
     all_parkings = parkings.find()
     return render_template('parkings.html', parkings=all_parkings)
-#
-# @app.route('/parking/new')
-# def parking_new():
-#     """Create a new parking."""
-#     return render_template('parking_new.html', parking={}, title='New Parking')
-#
-# @app.route('/parkings', methods=['POST'])
-# def parking_submit():
-#     """Submit a new parking."""
-#     parking = {
-#         'address': request.form.get('address'),
-#         'description': request.form.get('description'),
-#         'price': request.form.get('price'),
-#         'img': request.form.get('images'),
-#         # 'date': datetime.now().strftime('%A, %d %B, %Y'),
-#         # 'time': datetime.now().strftime('%I:%M %p')
-#     }
-#     parking_id = parkings.insert_one(parking).inserted_id
-#     return redirect(url_for('show_parking', parking_id=parking_id))
+
+@app.route('/parking/new')
+def parking_new():
+    """Create a new parking."""
+    return render_template('parking_new.html', parking={}, title='New Parking')
+
+@app.route('/parkings', methods=['POST'])
+def parking_submit():
+    """Submit a new parking."""
+    parking = {
+        'address': request.form.get('address'),
+        'description': request.form.get('description'),
+        'price': request.form.get('price'),
+        'img': request.form.get('images'),
+        # 'date': datetime.now().strftime('%A, %d %B, %Y'),
+        # 'time': datetime.now().strftime('%I:%M %p')
+    }
+    parking_id = parkings.insert_one(parking).inserted_id
+    return redirect(url_for('show_parking', parking_id=parking_id))
 #
 # @app.route('/parking/<parking_id>')
 # def show_parking(parking_id):
